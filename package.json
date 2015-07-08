@@ -1,0 +1,30 @@
+{
+  "name": "status-message-polyfill",
+  "version": "1.0.0",
+  "description": "Polyfill for http.IncomingMessage.statusMessage in node < v0.11.10",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calzoneman/status-message-polyfill.git"
+  },
+  "keywords": [
+    "status",
+    "message",
+    "statusMessage",
+    "polyfill"
+  ],
+  "author": "Calvin Montgomery",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calzoneman/status-message-polyfill/issues"
+  },
+  "homepage": "https://github.com/calzoneman/status-message-polyfill#readme",
+  "devDependencies": {
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+  }
+}
