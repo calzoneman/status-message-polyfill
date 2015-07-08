@@ -1,6 +1,6 @@
 {
   "name": "status-message-polyfill",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Polyfill for http.IncomingMessage.statusMessage in node < v0.11.10",
   "main": "index.js",
   "scripts": {
