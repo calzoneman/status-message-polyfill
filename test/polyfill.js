@@ -12,11 +12,11 @@ describe('polyfill', function () {
 
     if (major > 0 || minor > 11 || (minor === 11 && release >= 10)) {
         it('should not polyfill because ' + process.version + ' >= v0.11.10', function () {
-            assert(IncomingMessage.prototype.statusMessage === undefined);
+            assert(!IncomingMessage.prototype.hasOwnProperty('statusMessage'));
         });
     } else {
         it('should polyfill because ' + process.version + ' < v0.11.10', function () {
-            assert(IncomingMessage.prototype.statusMessage !== undefined);
+            assert(IncomingMessage.prototype.hasOwnProperty('statusMessage'));
         });
     }
 
@@ -25,7 +25,7 @@ describe('polyfill', function () {
             if (req.url === '/' + code) {
                 res.writeHead(code);
                 res.end('blah');
-                break;
+                return;
             }
         }
     });
@@ -37,6 +37,7 @@ describe('polyfill', function () {
         it('should return the correct status message for ' + code, function (done) {
             http.get('http://localhost:3737/' + code, function (res) {
                 assert.equal(res.statusMessage, STATUS_CODES[code]);
+                res.destroy();
                 done();
             });
         });
