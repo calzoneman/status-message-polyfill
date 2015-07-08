@@ -8,7 +8,8 @@ var minor = parseInt(version[2], 10);
 var release = parseInt(version[3], 10);
 
 // http.IncomingMessage.statusMessage was introduced in node v0.11.10
-if (major === 0 && (minor < 11 || (minor === 11 && release < 10))) {
+if (major === 0 && (minor < 11 || (minor === 11 && release < 10)) &&
+        !IncomingMessage.prototype.hasOwnProperty('statusMessage')) {
     Object.defineProperty(IncomingMessage.prototype, 'statusMessage', {
         get: function () {
             return STATUS_CODES[this.statusCode];

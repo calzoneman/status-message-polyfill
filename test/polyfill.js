@@ -18,6 +18,17 @@ describe('polyfill', function () {
         it('should polyfill because ' + process.version + ' < v0.11.10', function () {
             assert(IncomingMessage.prototype.hasOwnProperty('statusMessage'));
         });
+
+        it('should not polyfill if already polyfilled', function () {
+            for (var key in require.cache) {
+                delete require.cache[key];
+            }
+            require('../index');
+            for (var key in require.cache) {
+                delete require.cache[key];
+            }
+            require('../index');
+        });
     }
 
     var server = http.createServer(function (req, res) {
